@@ -1,7 +1,10 @@
 # Bed Tracker and Booking System
-
+***
 Below is application design diagram:
+
 ![image](https://github.com/deekshamypersonal/bedtracker/assets/150110347/50de1f49-910e-4853-bf3c-7f7a559e8338)
+
+***
 
 **Process Flow:**
 * Patients registers themselves by providing personal information including identity number and email.
@@ -11,6 +14,8 @@ Below is application design diagram:
 * If approved, the covid report gets uploaded to AWS S3 and deleted from db., bed available numbers for the hospital decrements by 1 and unique id is generated is mailed to the patient.
 * If the patient fails to arrive before 8 pm, booking automatically gets cancelled notifying user with an email.
 * If rejected, patient request is removed from database , although their credentials remain valid.
+  
+***
 
 **Technology Stack**
 * Backend- Springboot, Spring Data JPA, Hibernate, MySQL
