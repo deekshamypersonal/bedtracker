@@ -8,6 +8,7 @@ Below is application design diagram:
 
 **Process Flow:**
 * Patients registers themselves by providing personal information including identity number and email.
+* The patient receives a token on their email id upon registering, which they must click to complete the registration process.
 * Patients logs in and search for available beds in a hospital belonging to their city.
 * If available, they book the bed and uploads covid report. Report temporary gets loaded to db before approval.
 * Admin gets email notification for bed request. He can approve/reject the service.
@@ -18,7 +19,7 @@ Below is application design diagram:
 ***
 
 **Technology Stack**
-* Backend- Springboot, Spring Data JPA, Hibernate, MySQL
+* Backend- Springboot, Spring Data JPA, Hibernate, ,Spring Security, JWT, MySQL
 * RabbitMq message broker for asynchronous communication to email notification service
 * Eureka Discovery Server as registry service
 * Spring cloud gateway as a load balancer
