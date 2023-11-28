@@ -33,6 +33,10 @@ public class User {
     @Column(nullable=false)
     private String role;
 
+    private String emailVerificationToken;
+
+    private Boolean emailVerificationStatus = false;
+
     @OneToOne(mappedBy="user",cascade=CascadeType.REMOVE)
     private Patient patient;
 }

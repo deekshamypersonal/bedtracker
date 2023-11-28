@@ -1,5 +1,6 @@
 package com.bedmanagement.bedtracker.security;
 
+import com.bedmanagement.bedtracker.common.Utility;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -62,16 +63,17 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                                             Authentication auth) throws IOException, ServletException {
 
         String userName = ((User) auth.getPrincipal()).getUsername();
-        Instant now = Instant.now();
-
-        String token=Jwts
-                .builder()
-                .setClaims(new HashMap<>())
-                .setSubject(userName)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(Date.from(now.plusMillis(SecurityConstants.EXPIRATION_TIME)))
-                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
-                .compact();
+        String token=Utility.generateToken(userName);
+//        Instant now = Instant.now();
+//
+//        String token=Jwts
+//                .builder()
+//                .setClaims(new HashMap<>())
+//                .setSubject(userName)
+//                .setIssuedAt(new Date(System.currentTimeMillis()))
+//                .setExpiration(Date.from(now.plusMillis(SecurityConstants.EXPIRATION_TIME)))
+//                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+//                .compact();
 
         res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
         Cookie c=new Cookie(SecurityConstants.HEADER_STRING,token);
@@ -85,9 +87,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 //        throw new UserServiceException(ErrorMessageConstant.INVALID_CREDENTIALS);
 //    }
 
-    private Key getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SecurityConstants.getTokenSecret());
-        return Keys.hmacShaKeyFor(keyBytes);
-    }
+//    private Key getSignInKey() {
+//        byte[] keyBytes = Decoders.BASE64.decode(SecurityConstants.getTokenSecret());
+//        return Keys.hmacShaKeyFor(keyBytes);
+//    }
 
 }

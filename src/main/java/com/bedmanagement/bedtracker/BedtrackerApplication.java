@@ -9,6 +9,7 @@ import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
@@ -22,8 +23,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableJpaRepositories(basePackages = "com.bedmanagement.bedtracker.io.repository")
 @EnableEncryptableProperties
 @SpringBootApplication
-        //(scanBasePackages = {"com.bedmanagement.bedtracker.messagebroker"})
-//@EnableDiscoveryClient
+        (scanBasePackages = {"com.bedmanagement.bedtracker.messagebroker"})
+@EnableDiscoveryClient
 public class BedtrackerApplication {
 
     @Value("${cloud.aws.access-key}")
@@ -39,6 +40,23 @@ public class BedtrackerApplication {
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion("us-east-2").build();
     }
+
+//    @Primary
+//    @Bean
+//    public LoggerContext getLoggerContext() {
+//        LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
+//
+//        // Set the log file path programmatically
+//        context.putProperty("LOG_FILE_PATH", "abc");
+//
+//        // Log the configured log file path (optional)
+//        System.out.println("Configuring log file path: {}");
+//
+//        // Print logback internal status (optional)
+//        StatusPrinter.print(context);
+//
+//        return context;
+//    }
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
