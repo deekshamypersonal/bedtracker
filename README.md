@@ -19,7 +19,7 @@ Below is application design diagram:
 ***
 
 **Technology Stack**
-* Backend- Springboot, Spring Data JPA, Hibernate, MySQL
+* Backend- Springboot, Spring Data JPA, Hibernate, Spring Security, JWT, MySQL
 * RabbitMq message broker for asynchronous communication to email notification service
 * Eureka Discovery Server as registry service
 * Spring cloud gateway as a load balancer
