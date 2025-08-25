@@ -6,6 +6,15 @@ Below is application design diagram:
 
 ***
 
+*Related Microservices*
+This system is part of a microservices-based architecture. Other related services can be found here:
+
+- [API Gateway](https://github.com/deekshamypersonal/api-gateway)  
+- [Email Notification Service](https://github.com/deekshamypersonal/email-notification)  
+- [Eureka Discovery Service](https://github.com/deekshamypersonal/Discovery-Service)
+
+***
+
 **Process Flow:**
 * Patients register themselves by providing personal information, including their identity number and email.
 * The patient receives a token on their email ID upon registering, which they must click to complete the registration process.
