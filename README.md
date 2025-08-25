@@ -6,7 +6,7 @@ Below is application design diagram:
 
 ***
 
-*Related Microservices*
+**Related Microservices:**
 This system is part of a microservices-based architecture. Other related services can be found here:
 
 - [API Gateway](https://github.com/deekshamypersonal/api-gateway)  
